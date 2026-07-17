@@ -1,5 +1,7 @@
-import { motion } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { ArrowUpRight, Github, Linkedin, Mail, Phone } from 'lucide-react'
+import CursorPlayground from '../components/CursorPlayground'
 
 const socials = [
   { label: 'GitHub', href: 'https://github.com/Aadesh998', icon: Github },
@@ -11,9 +13,24 @@ const socials = [
 ]
 
 export default function Footer() {
+  const ref = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start end', 'start 25%'],
+  })
+
+  const wordmarkScale = useTransform(scrollYProgress, [0, 1], [0.82, 1.08])
+  const wordmarkY = useTransform(scrollYProgress, [0, 1], [80, -20])
+
   return (
-    <footer id="contact" className="bg-[#121212] text-white">
-      <div className="mx-auto max-w-7xl px-5 pb-10 pt-24 md:px-10 md:pt-36">
+    <footer
+      ref={ref}
+      id="contact"
+      className="relative cursor-none overflow-hidden bg-[#121212] text-white"
+    >
+      <CursorPlayground containerRef={ref} />
+
+      <div className="relative z-20 mx-auto max-w-7xl px-5 pb-10 pt-24 md:px-10 md:pt-36">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -118,14 +135,15 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* giant scroll-revealed wordmark */}
+      {/* giant wordmark: guaranteed fade-in on view, plus continuous scroll parallax */}
       <motion.div
-        initial={{ opacity: 0, y: 80, scale: 0.94 }}
-        whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        viewport={{ once: true, margin: '-100px' }}
-        transition={{ duration: 0.9, ease: 'easeOut' }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+        style={{ scale: wordmarkScale, y: wordmarkY }}
         aria-hidden
-        className="mt-16 select-none overflow-hidden px-5 md:px-10"
+        className="relative z-0 mt-16 origin-bottom select-none overflow-hidden px-5 md:px-10"
       >
         <div className="font-display -mb-[0.08em] whitespace-nowrap text-center text-[20vw] font-bold leading-[0.85] tracking-tighter text-white/95">
           aadesh.

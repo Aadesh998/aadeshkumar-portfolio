@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { ArrowDown, MapPin } from 'lucide-react'
+import CursorPlayground from '../components/CursorPlayground'
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null)
@@ -18,7 +19,7 @@ export default function Hero() {
     <header
       ref={ref}
       id="top"
-      className="relative flex min-h-screen flex-col overflow-hidden bg-[#121212] text-white"
+      className="relative flex min-h-screen cursor-none flex-col overflow-hidden bg-[#121212] text-white"
     >
       {/* subtle grid texture */}
       <div
@@ -31,9 +32,11 @@ export default function Hero() {
         }}
       />
 
+      <CursorPlayground containerRef={ref} />
+
       <motion.div
         style={{ opacity: contentOpacity, y: contentY }}
-        className="mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-5 pb-40 pt-32 md:px-10 md:pb-48"
+        className="relative z-20 mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-5 pb-40 pt-32 md:px-10 md:pb-48"
       >
         <motion.div
           initial={{ opacity: 0, y: 24 }}
