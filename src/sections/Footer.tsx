@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+import { useLocation } from 'react-router'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { ArrowUpRight, Github, Linkedin, Mail, Phone } from 'lucide-react'
 import CursorPlayground from '../components/CursorPlayground'
@@ -14,6 +15,8 @@ const socials = [
 
 export default function Footer() {
   const ref = useRef<HTMLElement>(null)
+  const onHome = useLocation().pathname === '/'
+  const toHref = (href: string) => (onHome ? href : `/${href}`)
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start end', 'start 25%'],
@@ -118,7 +121,7 @@ export default function Footer() {
               ].map(([label, href]) => (
                 <li key={label}>
                   <a
-                    href={href}
+                    href={toHref(href)}
                     className="text-sm font-medium text-white/80 transition-colors hover:text-white"
                   >
                     {label}

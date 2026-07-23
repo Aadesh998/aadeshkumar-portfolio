@@ -1,75 +1,85 @@
-import { motion } from 'framer-motion'
+import { motion } from "framer-motion";
 
 const groups = [
   {
-    title: 'Languages',
-    items: ['Go (Golang)', 'Python', 'SQL', 'Bash', 'Java'],
+    title: "Languages",
+    items: ["Go (Golang)", "Python", "SQL", "Bash", "Java"],
   },
   {
-    title: 'Backend & APIs',
+    title: "Backend & APIs",
     items: [
-      'REST APIs',
-      'Microservices',
-      'gRPC',
-      'GraphQL',
-      'WebSockets',
-      'Serverless (Lambda)',
-      'Event-Driven Architecture',
+      "REST APIs",
+      "Microservices",
+      "gRPC",
+      "GraphQL",
+      "WebSockets",
+      "Serverless (Lambda)",
+      "Event-Driven Architecture",
     ],
   },
   {
-    title: 'Cloud',
+    title: "Cloud",
     items: [
-      'AWS EC2',
-      'S3',
-      'Lambda',
-      'SQS',
-      'Fargate',
-      'DynamoDB',
-      'RDS',
-      'IAM',
-      'CloudWatch',
-      'GCP',
+      "AWS EC2",
+      "S3",
+      "Lambda",
+      "SQS",
+      "Fargate",
+      "DynamoDB",
+      "RDS",
+      "IAM",
+      "CloudWatch",
+      "GCP",
     ],
   },
   {
-    title: 'Data & Messaging',
+    title: "Data & Messaging",
     items: [
-      'PostgreSQL',
-      'MySQL',
-      'MongoDB',
-      'Redis',
-      'RabbitMQ',
-      'SQS',
-      'ElasticSearch / OpenSearch',
+      "PostgreSQL",
+      "MySQL",
+      "MongoDB",
+      "Redis",
+      "RabbitMQ",
+      "SQS",
+      "ElasticSearch / OpenSearch",
     ],
   },
   {
-    title: 'DevOps & Infrastructure',
+    title: "DevOps & Infrastructure",
     items: [
-      'Linux',
-      'Docker',
-      'Kubernetes',
-      'CI/CD — Jenkins, GitHub Actions',
-      'Git',
-      'Nginx',
-      'Caddy',
-      'Cloudflare',
+      "Linux",
+      "Docker",
+      "Kubernetes",
+      "CI/CD — Jenkins, GitHub Actions",
+      "Git",
+      "Nginx",
+      "Caddy",
+      "Cloudflare",
     ],
   },
   {
-    title: 'Observability & AI',
+    title: "Observability",
+    items: ["OpenTelemetry", "Grafana", "CloudWatch"],
+  },
+  {
+    title: "AI & Machine Learning",
     items: [
-      'OpenTelemetry',
-      'Grafana',
-      'LLMs',
-      'RAG',
-      'Vector Search',
-      'NLP',
-      'MCP',
+      "LLMs",
+      "RAG",
+      "Vector Search",
+      "NLP",
+      "MCP",
+      "Convolutional Neural Networks (CNN)",
+      "Fine Tuning",
+      "Computer Vision",
+      "OCR",
     ],
   },
-]
+  {
+    title: "Practices",
+    items: ["Software Design", "System Design", "Engineering"],
+  },
+];
 
 export default function Skills() {
   return (
@@ -78,7 +88,7 @@ export default function Skills() {
         <motion.h2
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
+          viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
           className="font-display text-4xl font-semibold tracking-tight md:text-6xl"
         >
@@ -91,7 +101,7 @@ export default function Skills() {
               key={g.title}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
+              viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: (i % 3) * 0.08 }}
             >
               <h3 className="border-b border-[#121212]/15 pb-3 text-sm font-semibold uppercase tracking-widest text-[#121212]/50">
@@ -112,5 +122,5 @@ export default function Skills() {
         </div>
       </div>
     </section>
-  )
+  );
 }

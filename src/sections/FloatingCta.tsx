@@ -6,10 +6,8 @@ export default function FloatingCta() {
   const [open, setOpen] = useState(true)
 
   useEffect(() => {
-    const isMobile = window.matchMedia('(max-width: 639px)').matches
-    if (!isMobile) return
-    // appears after the 1.6s entrance delay, then stays visible for 5s
-    const timer = setTimeout(() => setOpen(false), 1600 + 5000)
+    // appears after the 1.6s entrance delay, then stays visible for 3s
+    const timer = setTimeout(() => setOpen(false), 1600 + 3000)
     return () => clearTimeout(timer)
   }, [])
 
